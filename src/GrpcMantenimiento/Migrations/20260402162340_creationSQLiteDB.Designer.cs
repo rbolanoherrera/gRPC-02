@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GrpcMantenimiento.Migrations
 {
     [DbContext(typeof(GrpcDbContext))]
-    [Migration("20260401023236_CreaMigracion")]
-    partial class CreaMigracion
+    [Migration("20260402162340_creationSQLiteDB")]
+    partial class creationSQLiteDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,10 +25,10 @@ namespace GrpcMantenimiento.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Nombre")
+                    b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Status")

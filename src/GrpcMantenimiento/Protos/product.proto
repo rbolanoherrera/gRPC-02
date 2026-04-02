@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcMantenimiento";
+
+package productpto;
+
+service ProductSvc {
+    rpc CreateProduct (CreateProductRequest) returns (CreateProductResponse);
+    rpc GetProduct (ReadProductRequest) returns (ReadProductResponse);
+    rpc GetAll (GetAllRequest) returns (GetAllResponse);
+    rpc UpdateProduct (UpdateProductRequest) returns (UpdateProductResponse);
+    rpc DeleteProduct (DeleteProductRequest) returns (DeleteProductResponse);
+}
+
+message CreateProductRequest {
+    string name = 1;
+    string description = 2;
+}
+
+message CreateProductResponse {
+    int32 id = 1;
+}
+
+message ReadProductRequest {
+    int32 id = 1;
+}
+
+message ReadProductResponse {
+    int32 id = 1;
+    string name = 2;
+    string description = 3;
+    string status=4;
+}
+
+message GetAllRequest {
+
+}
+
+message GetAllResponse {
+    repeated ReadProductResponse products = 1;
+}
+
+message UpdateProductRequest {
+    int32 id = 1;
+    string name = 2;
+    string description = 3;
+    string status = 4;
+}
+
+message UpdateProductResponse {
+    int32 id = 1;
+    string updated_date = 2;
+}
+
+message DeleteProductRequest {
+    int32 id = 1;
+}
+
+message DeleteProductResponse {
+    int32 id = 1;
+    string deleted_date = 2;
+}

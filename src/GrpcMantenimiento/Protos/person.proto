@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcMantenimiento";
+
+package personpto;
+
+message PersonDTO {
+	string name = 2;
+	string lastName = 3;
+	string email = 4;
+}
+
+message PersonRequest {
+	PersonDTO person = 1;
+}
+
+message PersonResponse {
+	string code = 1;
+	string message = 2;
+}
+
+service PersonSvc {
+	//gRPC Unary
+	rpc InsertPerson (PersonRequest) returns (PersonResponse);
+}
