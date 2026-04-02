@@ -2,12 +2,26 @@ syntax = "proto3";
 
 option csharp_namespace = "GrpcMantenimiento";
 
+import "google/api/annotations.proto";
+
 package productpto;
 
 service ProductSvc {
-    rpc CreateProduct (CreateProductRequest) returns (CreateProductResponse);
+    rpc CreateProduct (CreateProductRequest) returns (CreateProductResponse){
+        option(google.api.http) = {
+                post: "/api/v1/products"
+                body: "*"
+            };
+    }
+
     rpc GetProduct (ReadProductRequest) returns (ReadProductResponse);
-    rpc GetAll (GetAllRequest) returns (GetAllResponse);
+
+    rpc GetAll (GetAllRequest) returns (GetAllResponse){
+        option(google.api.http) = {
+                get: "/api/v1/products"
+            };
+    }
+
     rpc UpdateProduct (UpdateProductRequest) returns (UpdateProductResponse);
     rpc DeleteProduct (DeleteProductRequest) returns (DeleteProductResponse);
 }
